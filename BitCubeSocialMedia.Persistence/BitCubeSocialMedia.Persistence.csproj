@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Compile Remove="Migrations\20190412220102_Initial.cs" />
+    <Compile Remove="Migrations\20190412221048_Initial.cs" />
   </ItemGroup>
 
   <ItemGroup>

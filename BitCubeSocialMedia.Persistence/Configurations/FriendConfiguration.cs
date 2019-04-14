@@ -1,4 +1,5 @@
-﻿using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities;
+﻿using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate;
+using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -17,7 +18,9 @@ namespace BitCubeSocialMedia.Persistence.Configurations
             builder.ToTable("Friend");
             builder.HasAlternateKey(t => new { t.Friend1Id, t.Friend2Id });
 
-            
+            builder.Property(t => t.Id).IsRequired();
+            builder.Property(t => t.Friend1Id).IsRequired();
+            builder.Property(t => t.Friend2Id).IsRequired();
         }
     }
 }

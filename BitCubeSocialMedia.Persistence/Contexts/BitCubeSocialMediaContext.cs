@@ -1,5 +1,6 @@
 ﻿using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate;
 using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities;
+using BitCubeSocialMedia.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,11 @@ namespace BitCubeSocialMedia.Persistence.Contexts
 
         public DbSet<User> Users { get; set; }
         public DbSet<Friend> Friends { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new FriendConfiguration());
+        }
     }
 }
