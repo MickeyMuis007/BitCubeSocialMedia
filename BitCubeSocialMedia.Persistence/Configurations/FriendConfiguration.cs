@@ -23,6 +23,8 @@ namespace BitCubeSocialMedia.Persistence.Configurations
             builder.Property(t => t.Id).IsRequired();
             builder.Property(t => t.Friend1Id).IsRequired();
             builder.Property(t => t.Friend2Id).IsRequired();
+
+            SeedData(builder);
         }
 
         private void SeedData(EntityTypeBuilder<Friend> builder)

@@ -4,14 +4,16 @@ using BitCubeSocialMedia.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BitCubeSocialMedia.Persistence.Migrations
 {
     [DbContext(typeof(BitCubeSocialMediaContext))]
-    partial class BitCubeSocialMediaContextModelSnapshot : ModelSnapshot
+    [Migration("20190414143252_SeedDataFriend")]
+    partial class SeedDataFriend
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
