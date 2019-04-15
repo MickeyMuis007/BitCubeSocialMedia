@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories
 {
-    public class UnitOfWork<TRepo> : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         #region Fields
         private IUserRepository _userRepository;

@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BitCubeSocialMedia.Infrastructure\BitCubeSocialMedia.Infrastructure.csproj" />
     <ProjectReference Include="..\BitCubeSocialMedia.Persistence\BitCubeSocialMedia.Persistence.csproj" />
   </ItemGroup>
 
