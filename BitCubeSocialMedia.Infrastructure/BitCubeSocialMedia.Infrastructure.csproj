@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BitCubeSocialMedia.Application\BitCubeSocialMedia.Application.csproj" />
     <ProjectReference Include="..\BitCubeSocialMedia.Domain\BitCubeSocialMedia.Domain.csproj" />
     <ProjectReference Include="..\BitCubeSocialMedia.Persistence\BitCubeSocialMedia.Persistence.csproj" />

@@ -1,5 +1,7 @@
 using AutoMapper;
+using BitCubeSocialMedia.Application.ILogic;
 using BitCubeSocialMedia.Domain.SeedWork;
+using BitCubeSocialMedia.Infrastructure.Implementations.Logics;
 using BitCubeSocialMedia.Infrastructure.Implementations.Repositories;
 using BitCubeSocialMedia.Persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
@@ -40,6 +42,8 @@ namespace BitCubeSocialMedia.Web
 
             services.AddTransient<BitCubeSocialMediaContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserLogic, UserLogic>();
+            services.AddScoped<IAuthentication, Authentication>();
 
             services.AddAutoMapper();
         }
