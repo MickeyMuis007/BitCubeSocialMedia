@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Implementations\" />
+    <ProjectReference Include="..\BitCubeSocialMedia.Domain\BitCubeSocialMedia.Domain.csproj" />
+    <ProjectReference Include="..\BitCubeSocialMedia.Persistence\BitCubeSocialMedia.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

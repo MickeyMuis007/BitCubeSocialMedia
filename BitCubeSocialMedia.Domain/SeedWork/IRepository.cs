@@ -12,6 +12,6 @@ namespace BitCubeSocialMedia.Domain.SeedWork
         Task<TEntity> GetById(TId id);
         Task Insert(TEntity entity);
         void Update(TEntity entity);
-        Task Delete(TEntity entity);
+        void Delete(TEntity entity);
     }
 }
