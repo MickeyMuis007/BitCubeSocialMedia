@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRepo
 {
-    public class UserRepository : Repository<User, Guid>, IRepository<User, Guid>
+    public class UserRepository : Repository<User, Guid>, IUserRepository
     {
         public UserRepository(BitCubeSocialMediaContext context) : base(context) { }
     }
