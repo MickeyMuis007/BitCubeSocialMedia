@@ -11,7 +11,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories
 {
     public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId> where TEntity : class, IAggregateRoot
     {
-        private readonly BitCubeSocialMediaContext _context;
+        protected readonly BitCubeSocialMediaContext _context;
 
         public Repository(BitCubeSocialMediaContext context)
         {
