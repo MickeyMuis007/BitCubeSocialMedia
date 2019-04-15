@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BitCubeSocialMedia.Application\BitCubeSocialMedia.Application.csproj" />
     <ProjectReference Include="..\BitCubeSocialMedia.Domain\BitCubeSocialMedia.Domain.csproj" />
     <ProjectReference Include="..\BitCubeSocialMedia.Persistence\BitCubeSocialMedia.Persistence.csproj" />
   </ItemGroup>

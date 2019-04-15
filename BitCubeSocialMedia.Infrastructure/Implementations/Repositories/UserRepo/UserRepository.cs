@@ -1,6 +1,7 @@
 ﻿using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate;
 using BitCubeSocialMedia.Domain.SeedWork;
 using BitCubeSocialMedia.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,15 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
     public class UserRepository : Repository<User, Guid>, IUserRepository
     {
         public UserRepository(BitCubeSocialMediaContext context) : base(context) { }
+
+        public async Task<bool> EmailExistAsync(string email)
+        {
+            return await _context.Users.AnyAsync(t => t.Email == email);
+        }
+
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(t => t.Email == email);
+        }
     }
 }
