@@ -1,3 +1,4 @@
+using AutoMapper;
 using BitCubeSocialMedia.Domain.SeedWork;
 using BitCubeSocialMedia.Infrastructure.Implementations.Repositories;
 using BitCubeSocialMedia.Persistence.Contexts;
@@ -39,6 +40,8 @@ namespace BitCubeSocialMedia.Web
 
             services.AddTransient<BitCubeSocialMediaContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
