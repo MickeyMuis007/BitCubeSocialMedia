@@ -49,7 +49,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
             }
         }
 
-        public async Task SignoutUser()
+        public async Task SignOutUser()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }

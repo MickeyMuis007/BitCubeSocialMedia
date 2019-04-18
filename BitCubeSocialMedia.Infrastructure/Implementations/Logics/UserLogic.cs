@@ -28,34 +28,47 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
 
         public async Task<bool> AddUser(SignUpModel signUpModel)
         {
-            if(!await _unitOfWork.UserRepository.EmailExistAsync(signUpModel.Email))
+            var isSuccess = true;
+            try
             {
-                var user = _mapper.Map<User>(signUpModel);
-                await _unitOfWork.UserRepository.Insert(user);
-                await _unitOfWork.SaveAsync();
+                if (!await _unitOfWork.UserRepository.EmailExistAsync(signUpModel.Email))
+                {
+                    var user = _mapper.Map<User>(signUpModel);
+                    await _unitOfWork.UserRepository.Insert(user);
+                    await _unitOfWork.SaveAsync();
+                }
+                else
+                {
+                    //TODO: Throw custom exist exception
+                    isSuccess = false;
+                }
             }
-            else
+            catch(Exception e)
             {
-                //TODO: Throw custom exist exception
+                // TODO: Throw exception to be handle by middle ware, still to implement
+                isSuccess = false;
             }
-            return true;
+            return isSuccess;
         }
 
         public async Task<bool> ValidateCredentials(SignInModel signInModel)
         {
+            var isValid = true;
             User user = await _unitOfWork.UserRepository.GetByEmailAsync(signInModel.Email);
             if(user != null)
             {
                 if(!BCrypt.Net.BCrypt.Verify(signInModel.Password, user.Password))
                 {
                     //TODO throw custom exception incorrect password
+                    isValid = false;
                 }
             }
             else
             {
                 //TODO: Throw custom exception not exist
+                isValid = false;
             }
-            return true;
+            return isValid;
         }
     }
 }

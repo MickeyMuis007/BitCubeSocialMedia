@@ -10,7 +10,7 @@ namespace BitCubeSocialMedia.Application.ILogic
     public interface IAuthentication
     {
         Task SignInUser(SignInModel signInModel);
-        Task SignoutUser();
+        Task SignOutUser();
         Task SignUpUser(SignUpModel signUpModel);
     }
 }
