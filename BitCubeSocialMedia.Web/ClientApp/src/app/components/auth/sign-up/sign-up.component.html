@@ -1,1 +1,66 @@
-<h2>Sign Up</h2>
+<div class="card">
+  <h2 class="card-header">Sign Up</h2>
+  <div class="card-body">
+    <form #form="ngForm" (ngSubmit)="save()" novalidate>
+      <div class="form-group">
+        <div class="input-group md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email">Email</span>
+          </div>
+          <input class="form-control" placeholder="Enter Email" aria-label="Email" aria-describedby="email" />
+          <span class="invalid-feedback">
+
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="firstName">First Name</span>
+          </div>
+          <input class="form-control" placeholder="Enter First Name" aria-label="First Name" aria-describedby="firstName" />
+          <span class="invalid-feedback">
+
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="lastName">Last Name</span>
+          </div>
+          <input class="form-control" placeholder="Enter Last Name" aria-label="Last Name" aria-describedby="lastName" />
+          <span class="invalid-feedback">
+
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="password">Password</span>
+          </div>
+          <input class="form-control" placeholder="Enter Password" aria-label="Password" aria-describedby="password" />
+          <span class="invalid-feedback">
+
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="confirmPassword">Confirm Password</span>
+          </div>
+          <input class="form-control" placeholder="Enter Password" aria-label="Confirm Password" aria-describedby="confirmPassword" />
+          <span class="invalid-feedback">
+
+          </span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-danger" [routerLink]="['/']">Cancel</button>
+        <button class="btn btn-outline-success" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
