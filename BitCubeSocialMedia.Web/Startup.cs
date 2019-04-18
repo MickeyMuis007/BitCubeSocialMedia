@@ -4,6 +4,7 @@ using BitCubeSocialMedia.Domain.SeedWork;
 using BitCubeSocialMedia.Infrastructure.Implementations.Logics;
 using BitCubeSocialMedia.Infrastructure.Implementations.Repositories;
 using BitCubeSocialMedia.Persistence.Contexts;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -45,6 +46,16 @@ namespace BitCubeSocialMedia.Web
             services.AddScoped<IUserLogic, UserLogic>();
             services.AddScoped<IAuthentication, Authentication>();
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options => 
+            {
+                options.LoginPath = "/auth/login";
+            });
+
             services.AddAutoMapper();
         }
 
@@ -65,6 +76,7 @@ namespace BitCubeSocialMedia.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
