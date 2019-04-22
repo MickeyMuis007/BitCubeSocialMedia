@@ -33,7 +33,8 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
             {
                 if (!await _unitOfWork.UserRepository.EmailExistAsync(signUpModel.Email))
                 {
-                    var user = _mapper.Map<User>(signUpModel);
+                    signUpModel.Password = BCrypt.Net.BCrypt.HashPassword(signUpModel.Password);
+                    var user = _mapper.Map<User>(signUpModel);                    
                     await _unitOfWork.UserRepository.Insert(user);
                     await _unitOfWork.SaveAsync();
                 }

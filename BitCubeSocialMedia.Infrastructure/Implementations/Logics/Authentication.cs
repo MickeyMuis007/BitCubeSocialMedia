@@ -30,8 +30,9 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
         #endregion Constructors
 
         #region Methods
-        public async Task SignInUser(SignInModel signInModel)
+        public async Task<ClaimsPrincipal> SignInUser(SignInModel signInModel)
         {
+            ClaimsPrincipal principle;
             if (await _userLogic.ValidateCredentials(signInModel))
             {
                 var claims = new List<Claim>
@@ -40,13 +41,14 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
                     new Claim("name", signInModel.Email)
                 };
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, "name", null);
-                var principle = new ClaimsPrincipal(identity);
-                await HttpContext.SignInAsync(principle);
+                principle = new ClaimsPrincipal(identity);
             }
             else
             {
                 //TODO: Throw custom exception
+                throw new Exception("Invalid user details");
             }
+            return principle;
         }
 
         public async Task SignOutUser()
@@ -58,12 +60,12 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
         {
             if(await _userLogic.AddUser(signUpModel))
             {
-                var signInModel = _mapper.Map<SignInModel>(signUpModel);
-                await SignInUser(signInModel);
+               
             }
             else
             {
                 //TODO: Throw custom exception
+                throw new Exception("Failed to sign up users");
             }
         }
         #endregion Methods
