@@ -12,6 +12,7 @@ import { FriendComponent } from './components/friend/friend.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { SignOutComponent } from './components/auth/sign-out/sign-out.component';
+import { CookieService } from 'angular2-cookie';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { SignOutComponent } from './components/auth/sign-out/sign-out.component'
       { path: 'auth/sign-out', component: SignOutComponent }
     ])
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

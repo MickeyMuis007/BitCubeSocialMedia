@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { SignUp } from 'src/app/shared/models/sign-up.model';
 import { SignIn } from '../shared/models/sign-in.model';
@@ -23,6 +22,10 @@ export class AuthService {
 
   signOut() {
     return this.httpClient.get(`${this.baseUrl}/signout`);
+  }
+
+  isAuthenticated() {
+    return this.httpClient.get(`${this.baseUrl}/isauthorize`);
   }
 }
 

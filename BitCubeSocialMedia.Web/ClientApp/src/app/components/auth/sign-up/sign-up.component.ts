@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ConfirmPasswordValidator } from 'src/app/shared/validators/confirm-password.validator';
 import { AuthService } from 'src/app/services/auth.service';
 import { SignUp } from 'src/app/shared/models/sign-up.model';
@@ -10,7 +11,7 @@ import { SignUp } from 'src/app/shared/models/sign-up.model';
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.buildFormGroup();
@@ -27,7 +28,11 @@ export class SignUpComponent implements OnInit {
       signUpModel.confirmPassword = this.signUpForm.controls.confirmPassword.value;
 
       this.authService.signUp(signUpModel).subscribe(
-        res => console.log('Successfully signed up!'),
+        res => {
+          console.log('Successfully signed up!');
+          this.router.navigate(['/'])
+          window.location.reload();
+        },
         err => console.error(err)
       );
     }

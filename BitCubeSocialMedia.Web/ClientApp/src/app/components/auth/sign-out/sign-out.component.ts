@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -6,11 +7,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls:  ['./sign-out.component.css']
 })
 export class SignOutComponent {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   save() {
     this.authService.signOut().subscribe(
-      res => console.log('Successfully signed out!'),
+      res => {
+        console.log('Successfully signed out!');
+        this.router.navigate(['/']);
+      },
       err => console.error(err)
     )
   }

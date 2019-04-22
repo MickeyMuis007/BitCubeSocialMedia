@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { SignIn } from 'src/app/shared/models/sign-in.model';
 
@@ -9,7 +10,7 @@ import { SignIn } from 'src/app/shared/models/sign-in.model';
 export class SignInComponent implements OnInit {
   signInFormGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
 
   }
 
@@ -26,7 +27,10 @@ export class SignInComponent implements OnInit {
       signInModel.password = this.signInFormGroup.controls.password.value;
 
       this.authService.signIn(signInModel).subscribe(
-        res => console.log('Successfully signed in!'),
+        res => {
+          console.log('Successfully signed in!');
+          this.router.navigate(['/']);
+        },
         err => console.error(err)
       );
     }

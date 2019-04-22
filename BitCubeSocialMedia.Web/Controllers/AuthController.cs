@@ -51,6 +51,14 @@ namespace BitCubeSocialMedia.Web.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok();
         }
+
+        [HttpGet("isauthorize")]
+        [Authorize]
+        public ActionResult<bool> IsAuthorize()
+        {
+            return Ok(true);
+        }
+
         #endregion Methods
     }
 }
