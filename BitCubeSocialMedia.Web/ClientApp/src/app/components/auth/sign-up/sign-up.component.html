@@ -1,15 +1,18 @@
 <div class="card">
   <h2 class="card-header">Sign Up</h2>
   <div class="card-body">
-    <form #form="ngForm" (ngSubmit)="save()" novalidate>
+    <form [formGroup]="signUpForm" #form="ngForm" (ngSubmit)="save()" novalidate>
       <div class="form-group">
         <div class="input-group md-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="email">Email</span>
           </div>
-          <input class="form-control" placeholder="Enter Email" aria-label="Email" aria-describedby="email" />
+          <input class="form-control" formControlName="email" placeholder="Enter Email" aria-label="Email" aria-describedby="email"
+                 [ngClass]="{'is-invalid': (signUpForm.get('email').touched || signUpForm.get('email').dirty || form.submitted)
+                 && signUpForm.get('email').invalid}"/>
           <span class="invalid-feedback">
-
+            <span *ngIf="signUpForm.get('email').hasError('required')">This field is required</span>
+            <span *ngIf="signUpForm.get('email').hasError('email')">Not a valid email</span>
           </span>
         </div>
       </div>
@@ -18,9 +21,11 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="firstName">First Name</span>
           </div>
-          <input class="form-control" placeholder="Enter First Name" aria-label="First Name" aria-describedby="firstName" />
+          <input class="form-control" formControlName="firstName" placeholder="Enter First Name" aria-label="First Name" aria-describedby="firstName"
+                 [ngClass]="{'is-invalid': (signUpForm.get('firstName').touched || signUpForm.get('firstName').dirty || form.submitted)
+                 && signUpForm.get('firstName').invalid}" />
           <span class="invalid-feedback">
-
+            <span *ngIf="signUpForm.get('firstName').hasError('required')">This field is required</span>
           </span>
         </div>
       </div>
@@ -29,9 +34,11 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="lastName">Last Name</span>
           </div>
-          <input class="form-control" placeholder="Enter Last Name" aria-label="Last Name" aria-describedby="lastName" />
+          <input class="form-control" formControlName="lastName" placeholder="Enter Last Name" aria-label="Last Name" aria-describedby="lastName"
+                 [ngClass]="{'is-invalid': (signUpForm.get('lastName').touched || signUpForm.get('lastName').dirty || form.submitted)
+                 && signUpForm.get('lastName').invalid}"/>
           <span class="invalid-feedback">
-
+            <span *ngIf="signUpForm.get('lastName').hasError('required')">This field is required</span>
           </span>
         </div>
       </div>
@@ -40,9 +47,12 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="password">Password</span>
           </div>
-          <input class="form-control" placeholder="Enter Password" aria-label="Password" aria-describedby="password" />
+          <input class="form-control" type="password" formControlName="password" placeholder="Enter Password" aria-label="Password" aria-describedby="password"
+                 [ngClass]="{'is-invalid': (signUpForm.get('password').touched || signUpForm.get('password').dirty || form.submitted)
+                 && signUpForm.get('password').invalid}" />
           <span class="invalid-feedback">
-
+            <span *ngIf="signUpForm.get('password').hasError('required')">This field is required</span>
+            <span *ngIf="signUpForm.get('password').hasError('minlength')">Must be at least 8 characters</span>
           </span>
         </div>
       </div>
@@ -51,9 +61,11 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="confirmPassword">Confirm Password</span>
           </div>
-          <input class="form-control" placeholder="Enter Password" aria-label="Confirm Password" aria-describedby="confirmPassword" />
+          <input class="form-control" type="password" formControlName="confirmPassword" placeholder="Enter Password" aria-label="Confirm Password" aria-describedby="confirmPassword"
+                 [ngClass]="{'is-invalid': (signUpForm.get('confirmPassword').touched || signUpForm.get('confirmPassword').dirty || form.submitted)
+                 && signUpForm.get('confirmPassword').invalid}"/>
           <span class="invalid-feedback">
-
+            <span *ngIf="signUpForm.get('confirmPassword').hasError('mismatch')">Password doesn't not match</span>
           </span>
         </div>
       </div>
