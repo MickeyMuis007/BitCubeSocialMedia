@@ -75,8 +75,9 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
 
         public async Task<UserViewModel> GetUserByEmail(string email)
         {
-            var user = _unitOfWork.UserRepository.GetByEmailAsync(email);
-            return null;
+            var user = await _unitOfWork.UserRepository.GetByEmailAsync(email);
+            var userViewModel = _mapper.Map<UserViewModel>(user);
+            return userViewModel;
         }
     }
 }

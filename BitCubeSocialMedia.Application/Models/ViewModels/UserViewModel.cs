@@ -12,5 +12,7 @@ namespace BitCubeSocialMedia.Application.Models.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public IEnumerable<FriendViewModel> Friend1s { get; set; }
+        public IEnumerable<FriendViewModel> Friends2 { get; set; }
     }
 }
