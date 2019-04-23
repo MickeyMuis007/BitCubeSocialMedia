@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BitCubeSocialMedia.Application.ILogic;
 using BitCubeSocialMedia.Application.Models.Auth;
+using BitCubeSocialMedia.Application.Models.ViewModels;
 using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate;
 using BitCubeSocialMedia.Domain.SeedWork;
 using System;
@@ -70,6 +71,12 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
                 isValid = false;
             }
             return isValid;
+        }
+
+        public async Task<UserViewModel> GetUserByEmail(string email)
+        {
+            var user = _unitOfWork.UserRepository.GetByEmailAsync(email);
+            return null;
         }
     }
 }
