@@ -1,40 +1,44 @@
-<div class="card">
-  <h2 class="card-header">Sign In</h2>
-  <div class="card-body">
-    <form [formGroup]="signInFormGroup" #form="ngForm" (ngSubmit)="save()" novalidate>
-      <div class="form-group">
-        <div class="input-group md-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="email">Email</span>
-          </div>
-          <input type="text" formControlName="email" class="form-control" placeholder="Enter Email"
-                 aria-label="Email" aria-describedby="email"
-                 [ngClass]="{'is-invalid': (signInFormGroup.get('email').touched || signInFormGroup.get('email').dirty || form.submitted)
+<app-nav-menu></app-nav-menu>
+<div [hidden]="!isLoading">Loading</div>
+<div [hidden]="isLoading" class="container">
+  <div class="card">
+    <h2 class="card-header">Sign In</h2>
+    <div class="card-body">
+      <form [formGroup]="signInFormGroup" #form="ngForm" (ngSubmit)="save()" novalidate>
+        <div class="form-group">
+          <div class="input-group md-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="email">Email</span>
+            </div>
+            <input type="text" formControlName="email" class="form-control" placeholder="Enter Email"
+                   aria-label="Email" aria-describedby="email"
+                   [ngClass]="{'is-invalid': (signInFormGroup.get('email').touched || signInFormGroup.get('email').dirty || form.submitted)
                 && !signInFormGroup.get('email').valid}" />
-          <span class="invalid-feedback">
-            <span *ngIf="signInFormGroup.get('email').hasError('required')">This field is required</span>
-            <span *ngIf="signInFormGroup.get('email').hasError('email')">Invalid email</span>
-          </span>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group md-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="password">Password</span>
+            <span class="invalid-feedback">
+              <span *ngIf="signInFormGroup.get('email').hasError('required')">This field is required</span>
+              <span *ngIf="signInFormGroup.get('email').hasError('email')">Invalid email</span>
+            </span>
           </div>
-          <input type="password" formControlName="password" class="form-control" placeholder="Enter Password"
-                 aria-label="Password" aria-describedby="password"
-                 [ngClass]="{'is-invalid': (signInFormGroup.get('password').touched || signInFormGroup.get('password').dirty || form.submitted)
-                && !signInFormGroup.get('password').valid}" />
-          <span class="invalid-feedback">
-            <span *ngIf="signInFormGroup.get('password').hasError('required')">This field is required</span>
-          </span>
         </div>
-      </div>
-      <div class="d-flex justify-content-end">
-        <button class="btn btn-outline-danger" [routerLink]="['/']">Cancel</button>
-        <button class="btn btn-outline-success" type="submit">Save</button>
-      </div>
-    </form>
+        <div class="form-group">
+          <div class="input-group md-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="password">Password</span>
+            </div>
+            <input type="password" formControlName="password" class="form-control" placeholder="Enter Password"
+                   aria-label="Password" aria-describedby="password"
+                   [ngClass]="{'is-invalid': (signInFormGroup.get('password').touched || signInFormGroup.get('password').dirty || form.submitted)
+                && !signInFormGroup.get('password').valid}" />
+            <span class="invalid-feedback">
+              <span *ngIf="signInFormGroup.get('password').hasError('required')">This field is required</span>
+            </span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-outline-danger" [routerLink]="['/']">Cancel</button>
+          <button class="btn btn-outline-success" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

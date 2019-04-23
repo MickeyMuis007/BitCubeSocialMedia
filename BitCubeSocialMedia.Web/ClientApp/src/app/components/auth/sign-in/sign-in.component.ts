@@ -9,6 +9,7 @@ import { SignIn } from 'src/app/shared/models/sign-in.model';
 })
 export class SignInComponent implements OnInit {
   signInFormGroup: FormGroup;
+  isLoading = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
 
@@ -26,13 +27,14 @@ export class SignInComponent implements OnInit {
       signInModel.email = this.signInFormGroup.controls.email.value;
       signInModel.password = this.signInFormGroup.controls.password.value;
 
+      this.isLoading = true;
       this.authService.signIn(signInModel).subscribe(
         res => {
           console.log('Successfully signed in!');
           this.router.navigate(['/']);
         },
         err => console.error(err)
-      );
+      ).add(() => this.isLoading = false );
     }
     else {
       console.log("Invalid")

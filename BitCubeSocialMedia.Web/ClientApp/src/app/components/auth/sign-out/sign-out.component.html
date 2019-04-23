@@ -1,10 +1,14 @@
-<div class="card">
-  <h2 class="card-header">Sign Out</h2>
-  <div class="card-body">
-    <h3>Are you sure want to sign out?</h3>
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-outline-danger" [routerLink]="['/']">No</button>
-      <button class="btn btn-outline-success" (click)="save()">Yes</button>
+<app-nav-menu></app-nav-menu>
+<div [hidden]="!isLoading">Loading...</div>
+<div [hidden]="isLoading" class="container">
+  <div class="card">
+    <h2 class="card-header">Sign Out</h2>
+    <div class="card-body">
+      <h3>Are you sure want to sign out?</h3>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-danger" [routerLink]="['/']">No</button>
+        <button class="btn btn-outline-success" (click)="save()">Yes</button>
+      </div>
     </div>
   </div>
 </div>

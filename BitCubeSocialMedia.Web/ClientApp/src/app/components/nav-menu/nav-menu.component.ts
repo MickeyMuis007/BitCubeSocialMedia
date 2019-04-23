@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,12 +8,22 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
-  @Input() isAuthorize;
+  isAuthorize = false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-   
+    this.authService.isAuthenticated().subscribe(
+      res => {
+        console.log('authorize');
+        this.isAuthorize = true;
+      },
+      err => {
+        console.clear();
+        console.log('not authorize', err);
+        this.isAuthorize = false;
+      }
+    );
   }
 
   collapse() {

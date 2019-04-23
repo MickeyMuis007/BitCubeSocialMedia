@@ -7,15 +7,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls:  ['./sign-out.component.css']
 })
 export class SignOutComponent {
+  isLoading = false;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   save() {
+    this.isLoading = true;
     this.authService.signOut().subscribe(
       res => {
         console.log('Successfully signed out!');
         this.router.navigate(['/']);
       },
       err => console.error(err)
-    )
+    ).add(() => this.isLoading = false);
   }
 }

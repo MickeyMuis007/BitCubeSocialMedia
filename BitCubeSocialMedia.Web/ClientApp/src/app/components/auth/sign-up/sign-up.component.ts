@@ -10,6 +10,7 @@ import { SignUp } from 'src/app/shared/models/sign-up.model';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
+  isLoading = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -27,14 +28,14 @@ export class SignUpComponent implements OnInit {
       signUpModel.password = this.signUpForm.controls.password.value;
       signUpModel.confirmPassword = this.signUpForm.controls.confirmPassword.value;
 
+      this.isLoading = true;
       this.authService.signUp(signUpModel).subscribe(
         res => {
           console.log('Successfully signed up!');
           this.router.navigate(['/'])
-          window.location.reload();
         },
         err => console.error(err)
-      );
+      ).add(() => this.isLoading = false);
     }
   }
 
