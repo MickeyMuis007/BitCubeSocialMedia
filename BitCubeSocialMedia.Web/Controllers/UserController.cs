@@ -20,7 +20,7 @@ namespace BitCubeSocialMedia.Web.Controllers
             _userLogic = userLogic;
         }
 
-        [HttpGet("email")]
+        [HttpGet("{email}")]
         public async Task<ActionResult<UserViewModel>> GetUserByEmail(string email)
         {
             return Ok(await _userLogic.GetUserByEmail(email));
