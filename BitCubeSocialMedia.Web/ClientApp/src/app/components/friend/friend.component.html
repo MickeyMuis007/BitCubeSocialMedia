@@ -1,5 +1,6 @@
 <app-nav-menu></app-nav-menu>
-<div class="container">
+<div [hidden]="!isLoading">Loading...</div>
+<div [hidden]="isLoading" class="container">
   <h2>Friends</h2>
   <div class="card" style="width: 18rem;">
     <img src="https://www.infrascan.net/demo/assets/img/avatar5.png" class="card-img-top" alt="group">
