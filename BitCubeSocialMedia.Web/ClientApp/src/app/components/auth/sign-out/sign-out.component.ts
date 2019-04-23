@@ -17,6 +17,7 @@ export class SignOutComponent {
       res => {
         console.log('Successfully signed out!');
         this.router.navigate(['/']);
+        localStorage.setItem('user', null);
       },
       err => console.error(err)
     ).add(() => this.isLoading = false);

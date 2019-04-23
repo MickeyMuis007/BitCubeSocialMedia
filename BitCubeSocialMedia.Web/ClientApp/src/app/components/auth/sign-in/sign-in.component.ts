@@ -31,9 +31,13 @@ export class SignInComponent implements OnInit {
       this.authService.signIn(signInModel).subscribe(
         res => {
           console.log('Successfully signed in!');
+          localStorage.setItem('user', signInModel.email);
           this.router.navigate(['/']);
         },
-        err => console.error(err)
+        err => {
+          console.error(err);
+          localStorage.setItem('user', null);
+        }
       ).add(() => this.isLoading = false );
     }
     else {

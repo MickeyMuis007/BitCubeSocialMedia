@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
   isAuthorize = false;
+  user;
 
   constructor(private authService: AuthService) { }
 
@@ -24,6 +25,7 @@ export class NavMenuComponent implements OnInit {
         this.isAuthorize = false;
       }
     );
+    this.user = localStorage.getItem('user');
   }
 
   collapse() {
