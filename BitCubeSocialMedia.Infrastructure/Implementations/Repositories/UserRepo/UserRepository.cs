@@ -21,7 +21,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
 
         public async Task<User> GetByEmailAsync(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(t => t.Email == email);
+            return await _context.Users.Include(t => t.Friend1s).Include(t => t.Friend2s).FirstOrDefaultAsync(t => t.Email == email);
         }
     }
 }
