@@ -33,7 +33,7 @@ import { CookieService } from 'angular2-cookie';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'profile', component: ProfileComponent },
-      { path: 'friend', component: FriendComponent },
+      { path: 'friend/:email', component: FriendComponent },
       { path: 'auth/sign-in', component: SignInComponent },
       { path: 'auth/sign-up', component: SignUpComponent },
       { path: 'auth/sign-out', component: SignOutComponent }
