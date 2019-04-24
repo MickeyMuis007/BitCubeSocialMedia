@@ -27,7 +27,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                 var user = await _context.Users.Include(t => t.Friend1s).Include(t => t.Friend2s).FirstOrDefaultAsync(t => t.Email == email);
                 foreach (var friend in user.Friend1s)
                 {
-                    if (friend.Friend1.Email != email)
+                    if (friend.Friend1?.Email != email)
                     {
                         friend.Friend1 = await GetByIdAsync(friend.Friend1Id);
                         user.Friends.Add(friend.Friend1);
@@ -40,7 +40,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                 }
                 foreach (var friend in user.Friend2s)
                 {
-                    if (friend.Friend1.Email != email)
+                    if (friend.Friend1?.Email != email)
                     {
                         friend.Friend1 = await GetByIdAsync(friend.Friend1Id);
                         user.Friends.Add(friend.Friend1);
