@@ -11,6 +11,7 @@ namespace BitCubeSocialMedia.Application.Models.ViewModels
         public UserViewModel()
         {
             Friends = new List<UserViewModel>();
+            NotFriends = new List<UserViewModel>();
         }
 
         public Guid Id { get; set; }
@@ -18,5 +19,6 @@ namespace BitCubeSocialMedia.Application.Models.ViewModels
         public string LastName { get; set; }
         public string Email { get; set; }
         public IEnumerable<UserViewModel> Friends { get; set; }
+        public IEnumerable<UserViewModel> NotFriends { get; set; }
     }
 }

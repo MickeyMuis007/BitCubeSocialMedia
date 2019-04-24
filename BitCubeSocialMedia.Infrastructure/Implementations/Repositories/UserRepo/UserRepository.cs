@@ -1,4 +1,5 @@
 ﻿using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate;
+using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.Builders;
 using BitCubeSocialMedia.Domain.SeedWork;
 using BitCubeSocialMedia.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -50,6 +51,8 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                         user.Friends.Add(friend.Friend2);
                     }
                 }
+                user.NotFriends.AddRange(await _context.Users.Where(t => !user.Friends.Any(a => a.Id == t.Id))
+                    .Select(t => BuilderFactory<UserBuilder>.Create().Copy(t).Build()).ToListAsync());
                 return user;
             }
             catch(Exception e)
