@@ -31,6 +31,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                     {
                         friend.Friend1 = await GetByIdAsync(friend.Friend1Id);
                         user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetId(friend.Id)
                             .SetFirstName(friend.Friend1.FirstName)
                             .SetLastName(friend.Friend1.LastName)
                             .SetEmail(friend.Friend1.Email)
@@ -40,6 +41,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                     {
                         friend.Friend2 = await GetByIdAsync(friend.Friend2Id);
                         user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetId(friend.Id)
                             .SetFirstName(friend.Friend2.FirstName)
                             .SetLastName(friend.Friend2.LastName)
                             .SetEmail(friend.Friend2.Email)
@@ -52,6 +54,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                     {
                         friend.Friend1 = await GetByIdAsync(friend.Friend1Id);
                         user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetId(friend.Id)
                             .SetFirstName(friend.Friend1.FirstName)
                             .SetLastName(friend.Friend1.LastName)
                             .SetEmail(friend.Friend1.Email)
@@ -61,6 +64,7 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                     {
                         friend.Friend2 = await GetByIdAsync(friend.Friend2Id);
                         user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetId(friend.Id)
                             .SetFirstName(friend.Friend2.FirstName)
                             .SetLastName(friend.Friend2.LastName)
                             .SetEmail(friend.Friend2.Email)
