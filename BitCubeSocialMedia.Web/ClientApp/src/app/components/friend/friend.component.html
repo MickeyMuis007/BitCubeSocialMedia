@@ -1,13 +1,41 @@
 <app-nav-menu></app-nav-menu>
 <div [hidden]="!isLoading">Loading...</div>
-<div [hidden]="isLoading" class="container">
-  <h2>Friends</h2>
-  <div class="card" style="width: 18rem;">
-    <img src="https://www.infrascan.net/demo/assets/img/avatar5.png" class="card-img-top" alt="group">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+<div [hidden]="isLoading">
+  <div *ngIf="user != null">
+    <div class="d-flex justify-content-center">
+      <h2>Welcome {{ user.firstName + ' ' + user.lastName }}</h2>
+    </div>
+    <div class="container">
+      <h3>Your Friends:</h3>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let friend of user.friends">
+          <div class="card">
+            <img src="https://www.infrascan.net/demo/assets/img/avatar5.png" class="card-img-top" alt="group">
+            <div class="card-body">
+              <h5 class="card-title">{{ friend.firstName + ' ' + friend.lastName }}</h5>
+              <p class="card-text">{{ friend.email }}</p>
+              <button class="btn btn-outline-warning">View</button>
+              <button class="btn btn-outline-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h3>Add New Friends:</h3>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let friend of user.friends">
+          <div class="card">
+            <img src="https://www.infrascan.net/demo/assets/img/avatar5.png" class="card-img-top" alt="group">
+            <div class="card-body">
+              <h5 class="card-title">{{ friend.firstName + ' ' + friend.lastName }}</h5>
+              <p class="card-text">{{ friend.email }}</p>
+              <button class="btn btn-outline-warning">View</button>
+              <button class="btn btn-outline-success">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

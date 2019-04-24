@@ -12,6 +12,14 @@ body {
   padding-top: 10px;
 }
 
-h2, a {
-  color: #fff;
+.container {
+  box-shadow: 3px 0px 13px grey;
+  border-radius: 15px 50px 15px 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.card {
+  border-radius: 10px;
+  background-color: beige;
 }

@@ -9,18 +9,19 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class FriendComponent implements OnInit {
   isLoading: boolean;
+  user: User;
   private email: string;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.email = this.activatedRoute.snapshot.params['email'];
+    this.email = this.activatedRoute.snapshot.params['email'];    ;
     this.userService.getUserByEmail(this.email).subscribe(
       (res: User) => {
         console.log('Successfully loaded users');
         console.log(res);
-        this.router.navigate(['/']);
+        this.user = res;
       },
       err => {
         console.error(err);

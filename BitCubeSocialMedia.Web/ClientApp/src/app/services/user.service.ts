@@ -5,11 +5,6 @@ import { Response } from '@angular/http';
 import { User } from "../shared/models/user.model";
 import { catchError, map } from "rxjs/operators";
 
-
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,13 +21,11 @@ export class UserService {
   }
 
   private extractData(res: Response) {
-    debugger;
     let body = res;
     return body || {};
   }
 
   private handleError(error: HttpErrorResponse) {
-    debugger;
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error("An error occurred:", error.error.message);
