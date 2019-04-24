@@ -12,6 +12,10 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities
     {
         public Guid Friend1Id { get; private set; }
         public Guid Friend2Id { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string Email { get; private set; }
+        public string Password { get; private set; }
 
         public User Friend1 { get; set; }
         public User Friend2 { get; set; }
@@ -23,6 +27,10 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities
             Id = builder.Id;
             Friend1Id = builder.Friend1Id;
             Friend2Id = builder.Friend2Id;
+            FirstName = builder.FirstName;
+            LastName = builder.LastName;
+            Email = builder.Email;
+            Password = builder.Password;
         }
     }
 }
