@@ -5,4 +5,7 @@ export class Friend {
   id: Guid;
   friend1Id: Guid;
   friend2Id: Guid;
+  email: string;
+  firstName: string;
+  lastName: string;
 }

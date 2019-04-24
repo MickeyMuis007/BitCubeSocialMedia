@@ -16,14 +16,12 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.Builders
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Email { get; private set; }
-        public string Password { get; private set; }
 
         public FriendBuilder()
         {
             FirstName = "";
             LastName = "";
             Email = "";
-            Password = "";
         }
 
         public FriendBuilder SetId(int id)
@@ -62,11 +60,6 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.Builders
             return this;
         }
 
-        public FriendBuilder SetPassword(string password)
-        {
-            Password = password;
-            return this;
-        }
         public FriendBuilder Copy(Friend friend)
         {
             Id = friend.Id;
@@ -75,7 +68,6 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.Builders
             FirstName = friend.FirstName;
             LastName = friend.LastName;
             Email = friend.Email;
-            Password = friend.Password;
             return this;
         }
 

@@ -19,6 +19,9 @@ namespace BitCubeSocialMedia.Persistence.Configurations
             builder.HasKey(t => t.Id);
             builder.ToTable("Friend");
             builder.HasAlternateKey(t => new { t.Friend1Id, t.Friend2Id });
+            builder.Ignore(t => t.FirstName);
+            builder.Ignore(t => t.LastName);
+            builder.Ignore(t => t.Email);
 
             builder.Property(t => t.Id).IsRequired();
             builder.Property(t => t.Friend1Id).IsRequired();

@@ -15,7 +15,6 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Email { get; private set; }
-        public string Password { get; private set; }
 
         public User Friend1 { get; set; }
         public User Friend2 { get; set; }
@@ -30,7 +29,6 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities
             FirstName = builder.FirstName;
             LastName = builder.LastName;
             Email = builder.Email;
-            Password = builder.Password;
         }
     }
 }

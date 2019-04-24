@@ -30,12 +30,20 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                     if (friend.Friend1?.Email != email)
                     {
                         friend.Friend1 = await GetByIdAsync(friend.Friend1Id);
-                        user.Friends.Add(friend.Friend1);
+                        user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetFirstName(friend.Friend1.FirstName)
+                            .SetLastName(friend.Friend1.LastName)
+                            .SetEmail(friend.Friend1.Email)
+                            .Build());
                     }
                     else
                     {
                         friend.Friend2 = await GetByIdAsync(friend.Friend2Id);
-                        user.Friends.Add(friend.Friend2);
+                        user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetFirstName(friend.Friend2.FirstName)
+                            .SetLastName(friend.Friend2.LastName)
+                            .SetEmail(friend.Friend2.Email)
+                            .Build());
                     }
                 }
                 foreach (var friend in user.Friend2s)
@@ -43,16 +51,28 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Repositories.UserRep
                     if (friend.Friend1?.Email != email)
                     {
                         friend.Friend1 = await GetByIdAsync(friend.Friend1Id);
-                        user.Friends.Add(friend.Friend1);
+                        user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetFirstName(friend.Friend1.FirstName)
+                            .SetLastName(friend.Friend1.LastName)
+                            .SetEmail(friend.Friend1.Email)
+                            .Build());
                     }
                     else
                     {
                         friend.Friend2 = await GetByIdAsync(friend.Friend2Id);
-                        user.Friends.Add(friend.Friend2);
+                        user.Friends.Add(BuilderFactory<FriendBuilder>.Create().Copy(friend)
+                            .SetFirstName(friend.Friend2.FirstName)
+                            .SetLastName(friend.Friend2.LastName)
+                            .SetEmail(friend.Friend2.Email)
+                            .Build());
                     }
                 }
-                user.NotFriends.AddRange(await _context.Users.Where(t => !user.Friends.Any(a => a.Id == t.Id))
-                    .Select(t => BuilderFactory<UserBuilder>.Create().Copy(t).Build()).ToListAsync());
+                user.NotFriends.AddRange(await _context.Users.Where(t => !user.Friends.Any(a => a.Email == t.Email))
+                    .Select(t => BuilderFactory<FriendBuilder>.Create()
+                    .SetFirstName(t.FirstName)
+                    .SetLastName(t.LastName)
+                    .SetEmail(t.Email)
+                    .Build()).ToListAsync());
                 return user;
             }
             catch(Exception e)

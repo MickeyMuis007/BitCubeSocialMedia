@@ -6,6 +6,6 @@ export class User {
   email: string;
   firstName: string;
   lastName: string;
-  friends?: User[];
-  notFriends?: User[];
+  friends?: Friend[];
+  notFriends?: Friend[];
 }
