@@ -18,8 +18,10 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate
 
         public IEnumerable<Friend> Friend1s { get; private set; }
         public IEnumerable<Friend> Friend2s { get; private set; }
-
-        private User() { }
+        public List<User> Friends { get; private set; }
+        private User() {
+            Friends = new List<User>();
+        }
         public User(UserBuilder builder)
         {
             Id = builder.Id;
@@ -27,6 +29,7 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate
             LastName = builder.LastName;
             Email = builder.Email;
             Password = builder.Password;
+            Friends = new List<User>();
         }
 
     }

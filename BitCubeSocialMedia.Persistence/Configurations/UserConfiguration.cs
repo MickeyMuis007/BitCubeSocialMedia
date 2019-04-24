@@ -18,6 +18,7 @@ namespace BitCubeSocialMedia.Persistence.Configurations
             builder.HasKey(t => t.Id);
             builder.ToTable("User");
             builder.HasAlternateKey(t => t.Email);      // Unique constraint
+            builder.Ignore(t => t.Friends);
 
             builder.HasMany(t => t.Friend1s)
                 .WithOne(t => t.Friend1)

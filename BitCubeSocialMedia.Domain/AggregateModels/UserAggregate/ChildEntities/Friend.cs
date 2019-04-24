@@ -13,8 +13,8 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities
         public Guid Friend1Id { get; private set; }
         public Guid Friend2Id { get; private set; }
 
-        public User Friend1 { get; private set; }
-        public User Friend2 { get; private set; }
+        public User Friend1 { get; set; }
+        public User Friend2 { get; set; }
 
         private Friend() { }
 

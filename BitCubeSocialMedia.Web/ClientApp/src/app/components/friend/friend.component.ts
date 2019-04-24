@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   templateUrl: './friend.component.html',
@@ -16,8 +17,9 @@ export class FriendComponent implements OnInit {
     this.isLoading = true;
     this.email = this.activatedRoute.snapshot.params['email'];
     this.userService.getUserByEmail(this.email).subscribe(
-      (res) => {
+      (res: User) => {
         console.log('Successfully loaded users');
+        console.log(res);
         this.router.navigate(['/']);
       },
       err => {

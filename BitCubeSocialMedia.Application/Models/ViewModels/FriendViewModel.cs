@@ -8,10 +8,7 @@ namespace BitCubeSocialMedia.Application.Models.ViewModels
 {
     public class FriendViewModel
     {
-        public Guid Friend1Id { get; private set; }
-        public Guid Friend2Id { get; private set; }
-
-        public UserViewModel Friend1 { get; set; }
-        public UserViewModel Friend2 { get; set; }
+        public Guid Friend1Id { get; set; }
+        public Guid Friend2Id { get; set; }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using BitCubeSocialMedia.Application.Models.ViewModels;
+using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate;
+using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.Builders;
 using BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.ChildEntities;
+using BitCubeSocialMedia.Domain.SeedWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,8 @@ namespace BitCubeSocialMedia.Application.Mappings
         public FriendMappingProfile()
         {
             CreateMap<Friend, FriendViewModel>();
+
+
         }
     }
 }

@@ -32,7 +32,8 @@
     "popper.js": "^1.14.3",
     "angular-jwt": "0.1.11",
     "ngx-cookie-service": "2.1.0",
-    "angular2-cookie": "1.2.6"
+    "angular2-cookie": "1.2.6",
+    "guid-typescript": "1.0.9"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",

@@ -1,10 +1,10 @@
 import { Friend } from "./friend.model";
+import { Guid } from 'guid-typescript';
 
 export class User {
-  id: string;
+  id: Guid;
   email: string;
   firstName: string;
   lastName: string;
-  friend1s: Friend[];
-  friend2s: Friend[];
+  friends?: Friend[];
 }

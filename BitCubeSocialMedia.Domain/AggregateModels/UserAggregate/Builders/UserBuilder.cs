@@ -15,6 +15,14 @@ namespace BitCubeSocialMedia.Domain.AggregateModels.UserAggregate.Builders
         public string Email { get; private set; }
         public string Password { get; private set; }
 
+        public UserBuilder()
+        {
+            FirstName = "";
+            LastName = "";
+            Email = "";
+            Password = "";
+        }
+
         public UserBuilder SetUserId(Guid userId)
         {
             Id = userId;

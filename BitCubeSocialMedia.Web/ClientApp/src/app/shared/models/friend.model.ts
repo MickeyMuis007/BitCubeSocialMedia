@@ -1,9 +1,8 @@
 import { User } from "./user.model";
+import { Guid } from "guid-typescript";
 
 export class Friend {
-  id: string;
-  friend1Id: string;
-  friend2Id: string;
-  friend1: User;
-  friend2: User;
+  id: Guid;
+  friend1Id: Guid;
+  friend2Id: Guid;
 }
