@@ -79,5 +79,12 @@ namespace BitCubeSocialMedia.Infrastructure.Implementations.Logics
             var userViewModel = _mapper.Map<UserViewModel>(user);
             return userViewModel;
         }
+
+        public async Task<UserViewModel> GetUserById(Guid id)
+        {
+            var user = await _unitOfWork.UserRepository.GetByIdAsync(id);
+            var userViewModel = _mapper.Map<UserViewModel>(user);
+            return userViewModel;
+        }
     }
 }

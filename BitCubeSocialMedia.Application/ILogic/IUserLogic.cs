@@ -13,5 +13,6 @@ namespace BitCubeSocialMedia.Application.ILogic
         Task<bool> ValidateCredentials(SignInModel signInModel);
         Task<bool> AddUser(SignUpModel signUpModel);
         Task<UserViewModel> GetUserByEmail(string email);
+        Task<UserViewModel> GetUserById(Guid id);
     }
 }
